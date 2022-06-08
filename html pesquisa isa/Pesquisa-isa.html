@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <title>ISA</title>
+    <style>
+        .border1 {
+            border-bottom: solid 1px #dfdfdf;
+        }
+
+        body {
+            background-color:
+                #dfdfdf;
+        }
+
+        .card {
+            width: 60rem;
+        }
+
+        .img {
+            height: 80px;
+            width: 250px;
+        }
+
+        .color_text {
+            color: rgb(100, 99, 99);
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        @media (max-width: 600px) {
+            .btn {
+                width: 100% !important;
+                margin: none !important;
+            }
+        }
+
+        .btn {
+            width: 110px;
+            height: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .margin-top {
+                margin-top: 10px;
+            }
+        }
+
+        .none {
+            display: none;
+        }
+
+        .valid-tooltip {
+            position: relative;
+            top: 15px;
+        }
+    </style>
+</head>
+
+<body class="body" onload="alterar_template()">
+    <div class="container">
+        <form class="row g-3 needs-validation" novalidate>
+            <div class="row d-flex justify-content-center mt-2">
+                <div class="card p-3">
+                    <div class="row d-flex">
+                        <div class="col-md-6">
+                            <img class="card-img-top img " src="logo-siga.png" alt="Card image cap">
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-3 mt-2">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="nome_associado"
+                                    value="Leonay Santhiel Luciano" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control margin-top" id="email_associado"
+                                    value="leonaygt2019@gmail.com" disabled>
+                            </div>
+                            <input type="" value="futo" id="causador_control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mt-2">
+                <div class="card p-3" id="card_atendimento">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="color_text">Como foi o atendimento recebido da oficina?</h4>
+                            <div class="col-md-5 ms-3 mt-3">
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="5"
+                                            name="atendimento" id="atendimento_otimo" value="" required>
+                                        <label class="form-check-label" for="atendimento_otimo">
+                                            Ótimo
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="4"
+                                            name="atendimento" id="atendimento_bom" required>
+                                        <label class="form-check-label" for="atendimento_bom">
+                                            Bom
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="3"
+                                            name="atendimento" id="atendimento_regular" required>
+                                        <label class="form-check-label" for="atendimento_regular">
+                                            Regular
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="2"
+                                            name="atendimento" id="atendimento_ruim" required>
+                                        <label class="form-check-label" for="atendimento_ruim">
+                                            Ruim
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="1"
+                                            name="atendimento" id="atendimento_pessimo" required>
+                                        <label class="form-check-label" for="atendimento_pessimo">
+                                            Péssimo
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="comentario_atendimento"
+                                    class="form-label color_text mt-2 mt-2">Comentário</label>
+                                <textarea class="form-control" id="comentario_atendimento" rows="3"
+                                    placeholder="Sua avaliação é muito importante para medirmos o atendimento de nossos parceiros."
+                                    required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mt-2">
+                <div class="card p-3" id="card_tempo">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="color_text">Em relação ao tempo que seu veículo ficou na oficina?</h4>
+                            <div class="col-md-5 ms-3 mt-3">
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="5" name="tempo"
+                                            id="tempo_otimo">
+                                        <label class="form-check-label" for="tempo_otimo">
+                                            Ótimo
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="4" name="tempo"
+                                            id="tempo_bom">
+                                        <label class="form-check-label" for="tempo_bom">
+                                            Bom
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="3" name="tempo"
+                                            id="tempo_regular">
+                                        <label class="form-check-label" for="tempo_regular">
+                                            Regular
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="2" name="tempo"
+                                            id="tempo_ruim">
+                                        <label class="form-check-label" for="tempo_ruim">
+                                            Ruim
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="1" name="tempo"
+                                            id="tempo_pessimo">
+                                        <label class="form-check-label" for="tempo_pessimo">
+                                            Péssimo
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="comentario_tempo" class="form-label color_text mt-2 mt-2">Comentário</label>
+                                <textarea class="form-control" id="comentario_tempo" rows="3"
+                                    placeholder="Sua avaliação é muito importante para que possamos melhorar a cada dia."
+                                    required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mt-2">
+                <div class="card p-3" id="card_reparo">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="color_text">Como ficou o reparo?</h4>
+                            <div class="col-md-5 ms-3 mt-3">
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="5" name="reparo"
+                                            id="reparo_otimo">
+                                        <label class="form-check-label" for="reparo_otimo">
+                                            Ótimo
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="4" name="reparo"
+                                            id="reparo_bom">
+                                        <label class="form-check-label" for="reparo_bom">
+                                            Bom
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="3" name="reparo"
+                                            id="reparo_regular">
+                                        <label class="form-check-label" for="reparo_regular">
+                                            Regular
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="2" name="reparo"
+                                            id="reparo_ruim">
+                                        <label class="form-check-label" for="reparo_ruim">
+                                            Ruim
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="1" name="reparo"
+                                            id="reparo_pessimo">
+                                        <label class="form-check-label" for="reparo_pessimo">
+                                            Péssimo
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="comentario_reparo" class="form-label color_text mt-2">Comentário</label>
+                                <textarea class="form-control" id="comentario_reparo"
+                                    placeholder="Sua avaliação é muito importante para medirmos a qualidade do serviço prestado."
+                                    rows="3" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mt-2">
+                <div class="card p-3" id="card_procedimento">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="color_text">Como foi o atendimento da Associação?</h4>
+                            <div class="col-md-5 ms-3 mt-3">
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="5"
+                                            name="procedimento" id="procedimento_otimo">
+                                        <label class="form-check-label" for="procedimento_otimo">
+                                            Ótimo
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="4"
+                                            name="procedimento" id="procedimento_bom">
+                                        <label class="form-check-label" for="procedimento_bom">
+                                            Bom
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="3"
+                                            name="procedimento" id="procedimento_regular">
+                                        <label class="form-check-label" for="procedimento_regular">
+                                            Regular
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="2"
+                                            name="procedimento" id="procedimento_ruim">
+                                        <label class="form-check-label" for="procedimento_ruim">
+                                            Ruim
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="1"
+                                            name="procedimento" id="procedimento_pessimo">
+                                        <label class="form-check-label" for="procedimento_pessimo">
+                                            Péssimo
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="comentario_procedimento" class="form-label mt-2"
+                                    class="color_text">Comentário</label>
+                                <textarea class="form-control" id="comentario_procedimento"
+                                    placeholder="Sua avaliação é muito importante para que possamos melhorar nosso atendimento."
+                                    rows="3" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mt-2">
+                <div class="card p-3" id="card_associado">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="color_text">Pretende continuar associado? Se não, por que?</h4>
+                            <div class="col-md-5 ms-3 mt-3">
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="1" name="associado"
+                                            id="associado_sim">
+                                        <label class="form-check-label" for="associado_sim">
+                                            Sim
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="2" name="associado"
+                                            id="associado_nao">
+                                        <label class="form-check-label" for="associado_nao">
+                                            Não
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="comentario_associado" class="form-label mt-2"
+                                    class="color_text">Comentário</label>
+                                <textarea class="form-control" id="comentario_associado"
+                                    placeholder="Sua avaliação é muito importante para que possamos melhorar a cada dia."
+                                    rows="3" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mt-2">
+                <div class="card p-3" id="card_terceiro">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="color_text">Possui interesse em se associar? Se
+                                sim, deixe seus dados.
+                            </h4>
+                            <div class="col-md-5 ms-3 mt-3">
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="1" name="terceiro"
+                                            id="terceiro_sim">
+                                        <label class="form-check-label" for="terceiro_sim">
+                                            Sim
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="2" name="terceiro"
+                                            id="terceiro_nao">
+                                        <label class="form-check-label" for="terceiro_nao">
+                                            Não
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="comentario_terceiro" class="form-label mt-2"
+                                    class="color_text">Comentário</label>
+                                <textarea class="form-control" id="comentario_terceiro" rows="3"
+                                    placeholder="Informe seu Whatsapp e o melhor horario para contato."
+                                    required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mt-2">
+                <div class="card p-3" id="card_indicacao">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="color_text">Indicaria um amigo?</h4>
+                            <div class="col-md-5 ms-3 mt-3">
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="1" name="indicacao"
+                                            id="indicacao_sim">
+                                        <label class="form-check-label" for="indicacao_sim">
+                                            Sim
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="2" name="indicacao"
+                                            id="indicacao_nao">
+                                        <label class="form-check-label" for="indicacao_nao">
+                                            Não
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="comentario_indicacao" class="form-label mt-2"
+                                    class="color_text">Comentário</label>
+                                <textarea class="form-control" id="comentario_indicacao"
+                                    placeholder="Sua avaliação é muito importante para que possamos melhorar a cada dia."
+                                    rows="3" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mt-2">
+                <div class="card p-3" id="card_sugestao">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="color_text">Possui alguma sugestão de melhoria para a associação?</h4>
+                            <div class="col-md-5 ms-3 mt-3">
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="1" name="sugestao"
+                                            id="sugestao_sim" required>
+                                        <label class="form-check-label" for="sugestao_sim">
+                                            Sim
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-check">
+                                        <input class="form-check-input" required type="radio" value="2" name="sugestao"
+                                            id="sugestao_nao">
+                                        <label class="form-check-label" for="sugestao_nao">
+                                            Não
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="comentario_sugestao" class="form-label mt-2"
+                                    class="color_text">Comentário</label>
+                                <textarea class="form-control" id="comentario_sugestao" rows="3"
+                                    placeholder="Sua sugestão de melhoria é muito importante para que possamos melhorar a cada dia."
+                                    required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="row end d-flex justify-content-center gx-0">
+                    <div style="width:60rem;">
+                        <button class="btn btn-success mt-3 mb-3" type="button" style="float:right;"
+                            onclick="mostrar()">Enviar</button>
+                        <button class="btn btn-primary" onclick="pute(result)">FazPost</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script>
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const nomeParam = urlParams.get('nome');
+        const associacaoParam = urlParams.get('associacao');
+        const protocoloParam = urlParams.get('protocolo');
+
+        console.log(nomeParam)
+        console.log(associacaoParam)
+        console.log(protocoloParam)
+
+
+        var result = {}
+        var card_atendimento = document.getElementById('card_atendimento')
+        var card_associado = document.getElementById('card_associado')
+        var card_indicacao = document.getElementById('card_indicacao')
+        var card_procedimento = document.getElementById('card_procedimento')
+        var card_reparo = document.getElementById('card_reparo')
+        var card_sugestao = document.getElementById('card_sugestao')
+        var card_tempo = document.getElementById('card_tempo')
+        var card_terceiro = document.getElementById('card_terceiro')
+        var causador_control = document.getElementById('causador_control')
+
+
+        function mostrar() {
+            let valor = 0
+            let atendimento = document.querySelector('input[name="atendimento"]:checked')
+            let tempo = document.querySelector('input[name="tempo"]:checked')
+            let reparo = document.querySelector('input[name="reparo"]:checked')
+            let procedimento = document.querySelector('input[name="procedimento"]:checked')
+            let associado = document.querySelector('input[name="associado"]:checked')
+            let terceiro = document.querySelector('input[name="terceiro"]:checked')
+            let indicacao = document.querySelector('input[name="indicacao"]:checked')
+            let sugestao = document.querySelector('input[name="sugestao"]:checked')
+            let comentario_associado = document.getElementById('comentario_associado')
+            let comentario_atendimento = document.getElementById('comentario_atendimento')
+            let comentario_indicacao = document.getElementById('comentario_indicacao')
+            let comentario_procedimento = document.getElementById('comentario_procedimento')
+            let comentario_reparo = document.getElementById('comentario_reparo')
+            let comentario_sugestao = document.getElementById('comentario_sugestao')
+            let comentario_tempo = document.getElementById('comentario_tempo')
+            let comentario_terceiro = document.getElementById('comentario_terceiro')
+            result = {
+                "id_pesquisa": protocoloParam,
+                "nome_usu": nomeParam,
+                "associ": associacaoParam,
+                "atend_oficina": atendimento?.value,
+                "comen_atend_oficina": comentario_atendimento.value,
+                "tempo": tempo?.value,
+                "comen_tempo": comentario_tempo.value,
+                "reparo": reparo?.value,
+                "coment_reparo": comentario_reparo.value,
+                "atend_associacao": associado?.value,
+                "comen_atend_associacao": comentario_associado.value,
+                "conti_associ": procedimento?.value,
+                "comen_conti_associ": comentario_procedimento.value,
+                "terceiro": terceiro?.value,
+                "comen_terceiro": comentario_terceiro.value,
+                "indicacao": indicacao?.value,
+                "comen_indicacao": comentario_indicacao.value,
+                "sugestao": sugestao?.value,
+                "comen_sugestao": comentario_sugestao.value
+            }
+            if (atendimento?.checked && tempo?.checked && reparo?.checked && procedimento?.checked && associado?.checked
+                && terceiro?.checked && indicacao?.checked && sugestao?.checked) {
+                valor = 8
+                console.log(valor)
+            }
+            if (comentario_atendimento.required == true || comentario_tempo.required == true || comentario_reparo.required == true
+                || comentario_procedimento.required == true || comentario_associado.required == true || comentario_terceiro.required == true || comentario_indicacao.required == true) {
+                console.log('yes')
+            }
+            if (atendimento?.value >= 4) {
+                comentario_atendimento.required = false
+            }
+            else if (atendimento?.value <= 3) {
+                comentario_atendimento.required = true
+            }
+            if (tempo?.value >= 4) {
+                comentario_tempo.required = false
+            }
+            else if (tempo?.value <= 3) {
+                comentario_tempo.required = true
+            }
+            if (reparo?.value >= 4) {
+                comentario_reparo.required = false
+            }
+            else if (reparo?.value <= 3) {
+                comentario_reparo.required = true
+            }
+            if (procedimento?.value >= 4) {
+                comentario_procedimento.required = false
+            }
+            else if (procedimento?.value <= 3) {
+                comentario_procedimento.required = true
+            }
+            if (associado?.value == 1) {
+                comentario_associado.required = false
+            }
+            else if (associado?.value == 2) {
+                comentario_associado.required = true
+            }
+            if (terceiro?.value == 1) {
+                comentario_terceiro.required = false
+            }
+            else if (terceiro == 2) {
+                comentario_terceiro.required = true
+            }
+            if (indicacao?.value == 1) {
+                comentario_indicacao.required = false
+            }
+            else if (indicacao?.value == 2) {
+                comentario_indicacao.required = true
+            }
+            if (sugestao?.value == 1) {
+                comentario_sugestao.required = false
+            }
+            else if (sugestao?.value == 2) {
+                comentario_sugestao.required = true
+            }
+            if (causador_control.value == "perda total") {
+                card_atendimento.style.display = 'none'
+                card_tempo.style.display = 'none'
+                card_reparo.style.display = 'none'
+                card_terceiro.style.display = 'none'
+                if (procedimento?.checked && associado?.checked
+                    && indicacao?.checked && sugestao) {
+                    valor = 8
+                    console.log(valor)
+                }
+            }
+            if (causador_control.value == "roubo") {
+                card_atendimento.style.display = 'none'
+                card_tempo.style.display = 'none'
+                card_reparo.style.display = 'none'
+                card_terceiro.style.display = 'none'
+                if (procedimento?.checked && associado?.checked
+                    && indicacao?.checked && sugestao?.checked) {
+                    valor = 8
+                    console.log(valor)
+                }
+            }
+            if (causador_control.value == "furto") {
+                card_atendimento.style.display = 'none'
+                card_tempo.style.display = 'none'
+                card_reparo.style.display = 'none'
+                card_terceiro.style.display = 'none'
+                if (procedimento?.checked && associado?.checked
+                    && indicacao?.checked && sugestao?.checked) {
+                    valor = 8
+                    console.log(valor)
+                }
+            }
+            if (causador_control.value == "terceiro") {
+                card_atendimento.style.display = 'none'
+                card_tempo.style.display = 'none'
+                card_reparo.style.display = 'none'
+                card_associado.style.display = 'none'
+                card_terceiro.style.display = 'block'
+                console.log('batata')
+                if (procedimento?.checked && terceiro?.checked && indicacao?.checked && sugestao?.checked) {
+                    valor = 8
+                }
+            }
+            if (valor != 8) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Preencha todos os campos!'
+                })
+            } else {
+                Swal.fire(
+                    'Parabéns!',
+                    'Pesquisa salva com sucesso!',
+                    'success')
+            }
+            console.log(result)
+        }
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+        function alterar_template() {
+            if (causador_control.value == "perda total") {
+                card_atendimento.style.display = 'none'
+                card_tempo.style.display = 'none'
+                card_reparo.style.display = 'none'
+                card_terceiro.style.display = 'none'
+                if (procedimento?.checked && associado?.checked
+                    && indicacao?.checked && sugestao) {
+                    valor = 8
+                    console.log(valor)
+                }
+            }
+            if (causador_control.value == "roubo") {
+                card_atendimento.style.display = 'none'
+                card_tempo.style.display = 'none'
+                card_reparo.style.display = 'none'
+                card_terceiro.style.display = 'none'
+                if (procedimento?.checked && associado?.checked
+                    && indicacao?.checked && sugestao?.checked) {
+                    valor = 8
+                    console.log(valor)
+                }
+            }
+            if (causador_control.value == "furto") {
+                card_atendimento.style.display = 'none'
+                card_tempo.style.display = 'none'
+                card_reparo.style.display = 'none'
+                card_terceiro.style.display = 'none'
+                if (procedimento?.checked && associado?.checked
+                    && indicacao?.checked && sugestao?.checked) {
+                    valor = 8
+                    console.log(valor)
+                }
+            }
+            if (causador_control.value == "terceiro") {
+                card_atendimento.style.display = 'none'
+                card_tempo.style.display = 'none'
+                card_reparo.style.display = 'none'
+                card_associado.style.display = 'none'
+                card_terceiro.style.display = 'block'
+                console.log('batata')
+                if (procedimento?.checked && terceiro?.checked && indicacao?.checked && sugestao?.checked) {
+                    valor = 8
+                }
+            }
+        }
+        function pute(result) {
+
+            event.preventDefault()
+            let url = 'http://localhost:3000/email'
+
+            fazPatch(url, result)
+        }
+        function fazPatch(url, body) {
+            console.log("Body=", body)
+            let request = new XMLHttpRequest()
+            request.open("PATCH", url, true)
+            request.setRequestHeader("Content-type", "application/json")
+            request.send(JSON.stringify(body))
+            request.onload = function () {
+                console.log(this.responseText)
+            }
+            return request.responseText
+        }   
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

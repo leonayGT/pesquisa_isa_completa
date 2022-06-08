@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <div class="row d-flex text-center">
+                <h1>Tela de informações SIGA</h1>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="row-gx-0 mb-4 d-flex justify-content-center ">
+                    <div class="col-md-3">
+                        <label>Nome Usuário</label>
+                        <input type="text" id="usuario" class="form-control">
+                    </div>
+                </div>
+                <div class="row-gx-0 mb-4 d-flex justify-content-center">
+                    <div class="col-md-3">
+                        <label>Nome Associação</label>
+                        <input type="text" id="associacao" class="form-control">
+                    </div>
+                </div>
+                <div class="row-gx-0 mb-4 d-flex justify-content-center">
+                    <div class="col-md-3">
+                        <label>Email Usuário</label>
+                        <input type="text" id="email" class="form-control">
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" onclick="enviar()" type="submit">POST API</button>
+                        <button class="btn btn-success" onclick="email(url)" style="float: right;">Envio email</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        function enviar() {
+            let usuario = document.getElementById('usuario')?.value
+            let associacao = document.getElementById('associacao')?.value
+            let email = document.getElementById('email')?.value
+
+            event.preventDefault()
+            let url = 'http://localhost:3000/info'
+            console.log(usuario, associacao, email)
+            body = {
+                "nome_usu":usuario,
+                "associ": associacao,
+                "email_usu": email
+            }
+            postEnviar(url, body)
+        }
+        function postEnviar(url, body) {
+            console.log("Body=", body)
+            let request = new XMLHttpRequest()
+            request.open("POST", url, true)
+            request.setRequestHeader("Content-type", "application/json")
+            request.send(JSON.stringify(body))
+            request.onload = function () {
+                console.log(this.responseText)
+            }
+            return request.responseText
+        }
+        function email(url) {
+            url = 'http://localhost:3000/info'
+            let request = new XMLHttpRequest()
+            request.open("GET", url, true)
+            request.setRequestHeader("Content-type", "application/json")
+            request.send(JSON.stringify(body))
+            request.onload = function () {
+                console.log(this.responseText)
+            }
+            return request.responseText
+        }
+    </script>
+</body>
+
+</html>

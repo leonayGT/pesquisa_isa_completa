@@ -1,0 +1,12 @@
+Como usar a aplicação
+
+#CRIE UM BANCO COM AS COLUNAS DA PESQUISA ISA
+1- Abra 3 janelas do vscode 
+2- Abra com live server o aquivo "inicio.html" e "pesquisa-isa.html" dentro da pasta "html pesquisa isa"
+3- Abra o terminal na "pasta API - pesquisa ISA"
+4- Execute o comando nodemon server para iniciar o servidor da API
+5- Na aplicação "inicio" coloque as informações e clique em "FazPost"
+6- NA aplicação "inicio" clique em "enviar" para o disparo do email
+7- Vá no seu email e abra o link recebido
+8- Preencha os campos e clique em enviar para salvar os dados
+9- Clique em fazer POST para injetr no banco
